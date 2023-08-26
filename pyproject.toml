@@ -1,0 +1,89 @@
+[tool.poetry]
+name = "rpi_devices"
+version = "0.0.0"
+description = "Raspberry pi device application"
+authors = ["Daniel Suhr <danielmsuhr@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+smbus2 = "^0.4.2"
+
+[tool.poetry.group.dev.dependencies]
+ipython = "^8.14.0"
+pytest = "^7.4.0"
+ruff = "^0.0.285"
+black = "^23.7.0"
+isort = "^5.12.0"
+invoke = "^2.2.0"
+pytest-mock = "^3.11.1"
+pytest-cov = "^4.1.0"
+mypy = "^1.5.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 105
+
+[tool.isort]
+line_length = 105
+profile = "black"
+
+[tool.pytest.ini_options]
+addopts = [
+    "-ra",
+    "--cov",
+    "--cov-report=term-missing",
+    "--no-cov-on-fail",
+    "--cov-fail-under=100",
+]
+
+[tool.coverage.report]
+omit = [
+    "*/tests/*",
+]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 105
+select = [
+    # pyflakes
+    "F",
+    # pycodestyle
+    "E", "W",
+    # isort
+    "I",
+    # pep8-naming
+    "N",
+    # pyupgrade
+    "UP",
+    # flake8-2020
+    "YTT",
+    # flake8-bugbear
+    "B",
+    # flake8-comprehensions
+    "C4",
+    # flake8-executable
+    "EXE",
+    # flake8-implicit-str-concat
+    "ISC",
+    # flake8-pyi
+    "PYI",
+    # flake8-return
+    "RET",
+    # flake8-simplify
+    "SIM",
+    # mccabe
+    "C90",
+    # eradicate
+    "ERA",
+    # pylint
+    "PLC", "PLE", "PIE",
+    # tidy imports
+    "TID",
+]
+
+[tool.ruff.mccabe]
+max-complexity = 10
