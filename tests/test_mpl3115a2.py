@@ -26,7 +26,7 @@ def device():
 
 @pytest.fixture
 def mock_device():
-    bus = smbus2.SMBus(1)
+    bus = smbus2.SMBus()
     return Mpl3115a2(bus=bus)
 
 
