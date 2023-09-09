@@ -3,7 +3,7 @@ from invoke import task
 
 @task
 def clean(c):
-    c.run("find . -regex '^.*\(__pycache__\|\.py[co]\)$ ' -delete")
+    c.run(r"find . -regex '^.*\(__pycache__\|\.py[co]\)$ ' -delete")
     c.run("find . -name '__pycache__' -type d -exec rm -rf {} +")
     c.run("rm -rf .coverage .pytest_cache .mypy_cache")
 
