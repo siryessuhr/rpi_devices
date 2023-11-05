@@ -10,21 +10,25 @@ repos:
       - id: check-merge-conflict
       - id: check-yaml
         args: [ '--unsafe' ]
+
   - repo: https://github.com/psf/black-pre-commit-mirror
-    rev: 23.9.0  # Black version
+    rev: 23.10.1  # Black version
     hooks:
       - id: black
+
   - repo: https://github.com/pycqa/isort
     rev: 5.12.0  # isort version
     hooks:
       - id: isort
         name: isort (python)
         args: ["--profile", "black", "--filter-files"]
+
   - repo: https://github.com/python-poetry/poetry
     rev: 1.6.1  # Poetry version
     hooks:
     -   id: poetry-check
     -   id: poetry-lock
+
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.0.285  # Ruff version
     hooks:
