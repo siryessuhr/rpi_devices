@@ -1,1 +1,2 @@
-# Raspberry Pi Sensor Application
+# Taigh (Home)
+## Taigh (noun) - Scottish Gaelic for 'house'
