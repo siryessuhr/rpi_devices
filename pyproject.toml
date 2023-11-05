@@ -15,11 +15,11 @@ pytest = "^7.4.0"
 ruff = "^0.0.285"
 black = "^23.7.0"
 isort = "^5.12.0"
-invoke = "^2.2.0"
 pytest-mock = "^3.11.1"
 pytest-cov = "^4.1.0"
 mypy = "^1.5.1"
 pre-commit = "^3.4.0"
+poethepoet = "^0.24.2"
 
 [build-system]
 requires = ["poetry-core"]
@@ -88,3 +88,31 @@ select = [
 
 [tool.ruff.mccabe]
 max-complexity = 10
+
+[tool.poe.tasks.clean]
+help = "Clean up Python generated artifacts."
+cmd = "rm -rf build dist .mypy_cache .pytest_cache .coverage .ruff ./**/*.pyc ./**/__pycache__"
+
+[tool.poe.tasks.clobber]
+help = "Clobber virtualenv and locally configured Python version."
+cmd = "rm -rf .venv .python-version"
+
+[tool.poe.tasks.format]
+help = "Auto-format code with Black, isort, & Ruff."
+sequence = [
+    { cmd = "ruff --fix ." },
+    { cmd = "black ." },
+    { cmd = "isort ." }
+]
+
+[tool.poe.tasks.lint]
+help = "Lint code with Black, isort, & Ruff."
+sequence = [
+    { cmd = "black --check ." },
+    { cmd = "isort --check ." },
+    { cmd = "ruff check ." }
+]
+
+[tool.poe.tasks.test]
+help = "Run tests via pytest."
+cmd = "pytest"
