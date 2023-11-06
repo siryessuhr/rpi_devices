@@ -1,9 +1,8 @@
-name: Main
+name: Python checks
 on:
   push:
     branches: [ "main" ]
   pull_request:
-    branches: [ "main" ]
 
 permissions:
   contents: read
@@ -11,6 +10,9 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./raspberrypy
     strategy:
       matrix:
         python-version: ["3.9", "3.10", "3.11"]
