@@ -3,8 +3,8 @@ import platform
 import pytest
 import smbus2
 
-from rpi_devices import constants
-from rpi_devices.mpl3115a2 import Mpl3115a2
+from devices import constants
+from devices.mpl3115a2 import Mpl3115a2
 
 raspberrypi = pytest.mark.skipif(
     platform.uname().node != "raspberrypi", reason="Only runs on Raspberry Pi."

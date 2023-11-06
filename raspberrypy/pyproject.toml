@@ -1,9 +1,13 @@
 [tool.poetry]
-name = "rpi_devices"
+name = "raspberrypy"
 version = "0.0.0"
-description = "Raspberry pi device application"
+description = "Raspberry Pi Peripherals in Python"
 authors = ["Daniel Suhr <danielmsuhr@gmail.com>"]
 readme = "README.md"
+packages = [
+    { include = "devices" },
+]
+exclude = ["devices/tests"]
 
 [tool.poetry.dependencies]
 python = "^3.9"

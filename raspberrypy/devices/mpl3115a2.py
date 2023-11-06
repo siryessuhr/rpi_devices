@@ -7,7 +7,7 @@ import time
 
 import smbus2
 
-from rpi_devices import constants
+from devices import constants
 
 _log = logging.Logger(__name__)
 
