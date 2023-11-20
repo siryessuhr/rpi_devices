@@ -11,25 +11,20 @@ repos:
       - id: check-yaml
         args: [ '--unsafe' ]
 
-  - repo: https://github.com/psf/black-pre-commit-mirror
-    rev: 23.10.1  # Black version
+  - repo: local
     hooks:
-      - id: black
+      - id: python-format
+        name: python-format
+        entry: poetry run -C raspberrypy poe format
+        language: system
+        pass_filenames: false
+        types_or:
+          - python
 
-  - repo: https://github.com/pycqa/isort
-    rev: 5.12.0  # isort version
-    hooks:
-      - id: isort
-        name: isort (python)
-        args: ["--profile", "black", "--filter-files"]
-
-  - repo: https://github.com/python-poetry/poetry
-    rev: 1.6.1  # Poetry version
-    hooks:
-    -   id: poetry-check
-    -   id: poetry-lock
-
-  - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.0.285  # Ruff version
-    hooks:
-      - id: ruff
+      - id: python-test
+        name: python-test
+        entry: poetry run -C raspberrypy poe test
+        language: system
+        pass_filenames: false
+        types_or:
+          - python
