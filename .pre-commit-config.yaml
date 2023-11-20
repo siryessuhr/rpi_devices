@@ -15,7 +15,7 @@ repos:
     hooks:
       - id: python-format
         name: python-format
-        entry: poetry run -C raspberrypy poe format
+        entry: poetry run -C raspberrypy poe --root raspberrypy format
         language: system
         pass_filenames: false
         types_or:
@@ -23,7 +23,7 @@ repos:
 
       - id: python-test
         name: python-test
-        entry: poetry run -C raspberrypy poe test
+        entry: poetry run -C raspberrypy poe --root raspberrypy test
         language: system
         pass_filenames: false
         types_or:
